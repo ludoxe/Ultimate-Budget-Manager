@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultra Budget Gamify.Android", "Ultra Budget Gamify\Ultra Budget Gamify.Android\Ultra Budget Gamify.Android.csproj", "{316A56A0-CA8F-4B7D-AE26-B659754F5E6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultra Budget Gamify", "Ultra Budget Gamify\Ultra Budget Gamify\Ultra Budget Gamify.csproj", "{14F5826C-3D2F-4C81-ABC2-4A79C9CEFBFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{316A56A0-CA8F-4B7D-AE26-B659754F5E6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{316A56A0-CA8F-4B7D-AE26-B659754F5E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{316A56A0-CA8F-4B7D-AE26-B659754F5E6A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{316A56A0-CA8F-4B7D-AE26-B659754F5E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{316A56A0-CA8F-4B7D-AE26-B659754F5E6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{316A56A0-CA8F-4B7D-AE26-B659754F5E6A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{14F5826C-3D2F-4C81-ABC2-4A79C9CEFBFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14F5826C-3D2F-4C81-ABC2-4A79C9CEFBFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14F5826C-3D2F-4C81-ABC2-4A79C9CEFBFF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{14F5826C-3D2F-4C81-ABC2-4A79C9CEFBFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14F5826C-3D2F-4C81-ABC2-4A79C9CEFBFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14F5826C-3D2F-4C81-ABC2-4A79C9CEFBFF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC9A65B4-6957-4190-84C2-238D7ADA3695}
+	EndGlobalSection
+EndGlobal

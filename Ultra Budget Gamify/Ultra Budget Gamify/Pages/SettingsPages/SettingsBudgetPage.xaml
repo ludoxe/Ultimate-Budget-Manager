@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ultra_Budget_Gamify.SettingsBudgetPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Titre "Paramètres de la gestion du budget" -->
+            <Label Text="Paramètres de la gestion du budget"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#FFF"
+                   BackgroundColor="#0072C6"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center"/>
+
+            <!-- Label "Début du budget" -->
+            <Label Text="Début du budget"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#0072C6"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+
+            <!-- Saisie utilisateur pour le début du budget -->
+            <DatePicker x:Name="startDatePicker"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+
+            <!-- Label "Fin du budget" -->
+            <Label Text="Fin du budget"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#0072C6"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+
+            <!-- Saisie utilisateur pour la fin du budget -->
+            <DatePicker x:Name="endDatePicker"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+
+            <!-- Bouton "Valider" -->
+            <Button Text="Valider"
+                    BackgroundColor="#5BCAFF"
+                    TextColor="White"
+                    FontSize="18"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="EndAndExpand"
+                    Clicked="ValidateButton_Clicked"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

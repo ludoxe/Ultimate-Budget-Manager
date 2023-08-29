@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ultra_Budget_Gamify.WeeklyBalanceSheetPage2">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <!-- En-tête -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
+                <Label Text="Rapport hebdomadaire"
+                       FontSize="30"
+                       VerticalOptions="Start"
+                       TextColor="#0072C6"
+                       FontAttributes="Bold"
+                       Margin="0,20,0,10"/>
+            </StackLayout>
+            <!-- StackLayout avec bouton "Précédent", contenu (jour de la semaine et date), et bouton "Suivant" -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="Start"
+                         Padding="15">
+                <!-- Bouton "Précédent" -->
+                <Button Text="Précédent"
+                    FontSize="10"
+                    Clicked="PreviousButton_Clicked"
+                    BackgroundColor="#5BCAFF"
+                    TextColor="White"
+                    WidthRequest="80"
+                    HeightRequest="35"
+                    HorizontalOptions="Start"
+                    VerticalOptions="End"/>
+
+                <!-- semaine du mois -->
+                <StackLayout x:Name="sl1" HorizontalOptions="CenterAndExpand">
+                    <Label x:Name="LabelWeekOfMonth"
+                       Text="{Binding WeekOfMonth}"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#D7444A"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+                    <Label Text="{Binding WeekPeriod}"
+                       FontSize="16"
+                       TextColor="#AAA"
+                       HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+                <!-- Bouton "Suivant" -->
+                <Button Text="Suivant"
+            Clicked="NextButton_Clicked"
+            BackgroundColor="#5BCAFF"
+            TextColor="White"
+            FontSize="10"
+            WidthRequest="80"
+            HeightRequest="35"
+            HorizontalOptions="End"
+            VerticalOptions="End"/>
+            </StackLayout>
+            <ScrollView>
+                <Frame CornerRadius="10" BackgroundColor="White" Padding="5" VerticalOptions="FillAndExpand">
+
+                    <!-- Utilisation d'un Grid pour créer le tableau -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <!-- Créer une ligne pour chaque jour de la semaine -->
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="200"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" BackgroundColor="#F5F5F5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Action" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                            <Label Text="Gagné" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                            <Label Text="Perdu" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                        </Grid>
+                        <!-- Labels pour les noms des jours -->
+                        <Label Text="Lundi" Grid.Row="1" Grid.Column="0" BackgroundColor="DarkGray" TextColor="White" 
+                               HorizontalTextAlignment="Center" 
+                               VerticalOptions="Start"/>
+                        <Label Text="Mardi" Grid.Row="2" Grid.Column="0" BackgroundColor="DarkGray" TextColor="White" 
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Start"/>
+                        <Label Text="Mercredi" Grid.Row="3" Grid.Column="0" BackgroundColor="DarkGray" TextColor="White" 
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Start"/>
+                        <Label Text="Jeudi" Grid.Row="4" Grid.Column="0" BackgroundColor="DarkGray" TextColor="White" 
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Start"/>
+                        <Label Text="Vendredi" Grid.Row="5" Grid.Column="0" BackgroundColor="DarkGray" TextColor="White" 
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Start"/>
+                        <Label Text="Samedi" Grid.Row="6" Grid.Column="0" BackgroundColor="DarkGray" TextColor="White" 
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Start"/>
+                        <Label Text="Dimanche" Grid.Row="7" Grid.Column="0" BackgroundColor="DarkGray" TextColor="White" 
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Start"/>
+
+                        <!-- BindableLayouts pour chaque jour -->
+                     
+                        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding MondayBudgetActions}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid BackgroundColor="#E8F2F9">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Text="{Binding GetActionName}" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionGain}" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionLoss}" Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                        </Grid>
+                                    </ViewCell>
+
+                                </DataTemplate>
+
+                            </ListView.ItemTemplate>
+
+                        </ListView>
+
+                        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding TuesdayBudgetActions}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid BackgroundColor="#E8F2F9">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Text="{Binding GetActionName}" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionGain}" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionLoss}" Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding WednesdayBudgetActions}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid BackgroundColor="#E8F2F9">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Text="{Binding GetActionName}" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionGain}" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionLoss}" Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding TuesdayBudgetActions}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid BackgroundColor="#E8F2F9">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Text="{Binding GetActionName}" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionGain}" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionLoss}" Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding FridayBudgetActions}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid BackgroundColor="#E8F2F9">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Text="{Binding GetActionName}" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionGain}" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionLoss}" Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SaturdayBudgetActions}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid BackgroundColor="#E8F2F9">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Text="{Binding GetActionName}" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionGain}" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionLoss}" Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SundayBudgetActions}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid BackgroundColor="#E8F2F9">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Text="{Binding GetActionName}" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionGain}" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                            <Label Text="{Binding GetActionLoss}" Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+
+
+                    </Grid>
+
+                </Frame>
+            </ScrollView>
+            <!-- Espace entre le tableau et le bouton "Ajouter" -->
+            <StackLayout HeightRequest="20"/>
+
+            <!-- Bouton "Ajouter" -->
+            <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="AddButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

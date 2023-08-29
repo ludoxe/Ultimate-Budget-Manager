@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ultra_Budget_Gamify.AddBudgetActionPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="10" VerticalOptions="CenterAndExpand">
+
+
+            <!-- Titre "Action" avec la période -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Action"
+                       FontSize="36"
+                       FontAttributes="Bold"
+                       TextColor="#0072C6"/>
+                <Label Text="{Binding PeriodText}"
+                       FontSize="36"
+                       FontAttributes="Bold"
+                       TextColor="#0072C6"
+                       VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+
+            <!-- Jour de la semaine -->
+            <BoxView HeightRequest="1" BackgroundColor="#D7444A" HorizontalOptions="CenterAndExpand"/>
+
+            <Label Text="{Binding DayOfWeek}"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#D7444A"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+
+            <!-- Date en format DD/MM/AAAA -->
+            <Label Text="{Binding DateFormatted}"
+                   FontSize="18"
+                   TextColor="#AAA"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+
+            <!-- Encadrement blanc avec bords arrondis -->
+            <Frame CornerRadius="10" BackgroundColor="White">
+                <StackLayout Spacing="10">
+                    <!-- Titre "Nom de l'action" -->
+                    <Label Text="Nom de l'action"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#0072C6"
+                           BackgroundColor="#E8F2F9"
+                           Padding="10"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"/>
+
+                    <!-- Saisie utilisateur pour le nom de l'action -->
+                    <Entry Placeholder="Action"
+                           x:Name="actionEntry"
+                           Keyboard="Text"
+                           FontSize="48"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center"/>
+
+                    <!-- Titre "Gain de l'action" -->
+                    <Label Text="Gain de l'action"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#0072C6"
+                           BackgroundColor="#E8F2F9"
+                           Padding="10"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"/>
+
+                    <!-- Saisie utilisateur pour le gain de l'action -->
+                    <Entry Placeholder="0,00"
+                           x:Name="gainEntry"
+                           Keyboard="Numeric"
+                           FontSize="48"
+                           WidthRequest="200"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"/>
+
+                    <!-- Titre "Dépense de l'action" -->
+                    <Label Text="Dépense de l'action"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#0072C6"
+                           BackgroundColor="#E8F2F9"
+                           Padding="10"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"/>
+
+                    <!-- Saisie utilisateur pour la dépense de l'action -->
+                    <Entry Placeholder="0,00"
+                           x:Name="lossEntry"
+                           Keyboard="Numeric"
+                           FontSize="48"
+                           WidthRequest="200"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"/>
+
+                    <!-- Bouton "Valider" en bas -->
+                    <Button Text="Valider"
+                            BackgroundColor="#5BCAFF"
+                            TextColor="White"
+                            FontSize="24"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="End"
+                            Clicked="ValidateButton_Clicked"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

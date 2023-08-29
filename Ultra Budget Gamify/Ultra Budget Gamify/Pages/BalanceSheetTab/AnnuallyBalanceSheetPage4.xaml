@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ultra_Budget_Gamify.AnnuallyBalanceSheetPage4">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <!-- En-tête -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Rapport"
+                       FontSize="30"
+                       VerticalOptions="Start"
+                       TextColor="#0072C6"
+                       FontAttributes="Bold"
+                       Margin="0,20,0,10"/>
+                <Label Text="{Binding PeriodText}"
+                       FontSize="30"
+                       VerticalOptions="Start"
+                       TextColor="#0072C6"
+                       FontAttributes="Bold"
+                       Margin="0,20,0,10"
+                       VerticalTextAlignment="Center"/>
+            </StackLayout>
+
+            <!-- StackLayout avec bouton "Précédent", contenu (jour de la semaine et date), et bouton "Suivant" -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="EndAndExpand"
+                         Padding="15">
+                <!-- Bouton "Précédent" -->
+                <Button Text="Précédent"
+                    FontSize="10"
+                    Clicked="PreviousButton_Clicked"
+                    BackgroundColor="#5BCAFF"
+                    TextColor="White"
+                    WidthRequest="80"
+                    HeightRequest="35"
+                    HorizontalOptions="Start"
+                    VerticalOptions="End"/>
+
+                <!-- Jour de la semaine et date -->
+                <StackLayout x:Name="sl1" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding DayOfWeek}"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="#D7444A"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+
+                    <Label Text="{Binding Date}"
+               FontSize="18"
+               TextColor="#AAA"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+                <!-- Bouton "Suivant" -->
+                <Button Text="Suivant"
+            Clicked="NextButton_Clicked"
+            BackgroundColor="#5BCAFF"
+            TextColor="White"
+            FontSize="10"
+            WidthRequest="80"
+            HeightRequest="35"
+            HorizontalOptions="End"
+            VerticalOptions="End"/>
+            </StackLayout>
+            <!-- Frame autour du tableau -->
+            <Frame CornerRadius="10" BackgroundColor="White" Padding="10">
+                <ListView x:Name="dailyBalanceListView" ItemsSource="{Binding DayBudgetReportShow}">
+                    <!-- ... contenu du ListView ... -->
+                </ListView>
+            </Frame>
+
+            <!-- Espace entre le tableau et le bouton "Ajouter" -->
+            <StackLayout HeightRequest="20"/>
+
+            <!-- Bouton "Ajouter" -->
+            <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="AddButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

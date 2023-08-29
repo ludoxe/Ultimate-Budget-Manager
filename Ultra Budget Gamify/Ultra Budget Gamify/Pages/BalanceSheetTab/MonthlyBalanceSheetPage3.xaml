@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ultra_Budget_Gamify.MonthlyBalanceSheetPage3">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <!-- En-tête -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Rapport mensuel"
+                       FontSize="30"
+                       VerticalOptions="Start"
+                       TextColor="#0072C6"
+                       FontAttributes="Bold"
+                       Margin="0,20,0,10"/>
+            </StackLayout>
+
+            <!-- StackLayout avec bouton "Précédent", contenu (jour de la semaine et date), et bouton "Suivant" -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="EndAndExpand"
+                         Padding="15">
+                <!-- Bouton "Précédent" -->
+                <Button Text="Précédent"
+                    FontSize="10"
+                    Clicked="PreviousButton_Clicked"
+                    BackgroundColor="#5BCAFF"
+                    TextColor="White"
+                    WidthRequest="80"
+                    HeightRequest="35"
+                    HorizontalOptions="Start"
+                    VerticalOptions="End"/>
+
+                <!-- Jour de la semaine et date -->
+                <StackLayout x:Name="sl1" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding BindingMonth}"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="#D7444A"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+
+                    <Label Text="{Binding BindingYear}"
+               FontSize="18"
+               TextColor="#AAA"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+                <!-- Bouton "Suivant" -->
+                <Button Text="Suivant"
+            Clicked="NextButton_Clicked"
+            BackgroundColor="#5BCAFF"
+            TextColor="White"
+            FontSize="10"
+            WidthRequest="80"
+            HeightRequest="35"
+            HorizontalOptions="End"
+            VerticalOptions="End"/>
+            </StackLayout>
+            <!-- Frame autour du tableau -->
+            <Frame CornerRadius="10" BackgroundColor="White" Padding="10">
+                <ListView x:Name="MonthlyBalanceSortedListView" ItemsSource="{Binding MonthBudgetReport}">
+                    <ListView.Header>
+                        <Grid BackgroundColor="#F5F5F5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Date" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                            <Label Text="Action" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                            <Label Text="Gagné" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                            <Label Text="Perdu" Grid.Row="0" Grid.Column="3" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid BackgroundColor="#E8F2F9">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding Key, StringFormat='{0:dd/MM/yyyy}'}" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                        <ListView Grid.Column="1" ItemsSource="{Binding Value.GetBudgetActions}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                            <Label Text="{Binding GetActionName}" />
+                                                            <Label Text="{Binding GetActionGain}" />
+                                                            <Label Text="{Binding GetActionLoss}" />
+                                                        </StackLayout>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
+
+            <!-- Espace entre le tableau et le bouton "Ajouter" -->
+            <StackLayout HeightRequest="20"/>
+
+            <!-- Bouton "Ajouter" -->
+            <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" Clicked="AddButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

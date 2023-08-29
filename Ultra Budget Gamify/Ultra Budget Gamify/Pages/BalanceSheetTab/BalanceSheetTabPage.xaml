@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ultra_Budget_Gamify"
+             x:Class="Ultra_Budget_Gamify.BalanceSheetTabPage
+             ">
+
+    <CarouselPage.Children>
+        <local:DailyBalanceSheetPage1 />
+        <local:WeeklyBalanceSheetPage2 />
+        <local:MonthlyBalanceSheetPage3 />
+        <local:AnnuallyBalanceSheetPage4 />
+    </CarouselPage.Children> 
+    
+
+</CarouselPage>

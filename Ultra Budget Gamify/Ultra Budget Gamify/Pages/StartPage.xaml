@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ultra_Budget_Gamify.StartPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="60" CornerRadius="0">
+            <Label Text="Ultimate Budget Manager" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Start"
+                   TextColor="White" 
+                   FontSize="40"/>
+        </Frame>
+        <Label Text="Cette application fut dévelopée par Thomas LY pour son usage personnel. &#10; Son utilisation n'a pas été prévue pour d'autres utilisateurs. &#10; N'oubliez pas ! C'est Thomas, le seul et l'unique qui a développé ULTIMATE BUDGET MANAAAGER !!!!"
+                FontSize="20"
+               VerticalOptions="Center"
+               Padding="10"
+        />
+        <Button Text="Continuer" 
+                FontSize="30" 
+                Padding="20" 
+                HorizontalOptions="Center" 
+                VerticalOptions="CenterAndExpand"
+                Clicked="OnStartPageButtonClicked"
+                />
+        </StackLayout>
+
+</ContentPage>
