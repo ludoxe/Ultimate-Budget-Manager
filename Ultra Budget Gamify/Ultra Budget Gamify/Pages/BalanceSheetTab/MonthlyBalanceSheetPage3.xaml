@@ -58,58 +58,44 @@
             </StackLayout>
             <!-- Frame autour du tableau -->
             <Frame CornerRadius="10" BackgroundColor="White" Padding="10">
-                <ListView x:Name="MonthlyBalanceSortedListView" ItemsSource="{Binding MonthBudgetReport}">
-                    <ListView.Header>
-                        <Grid BackgroundColor="#F5F5F5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Date" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
-                            <Label Text="Action" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
-                            <Label Text="Gagné" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
-                            <Label Text="Perdu" Grid.Row="0" Grid.Column="3" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
-                        </Grid>
-                    </ListView.Header>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.View>
-                                    <Grid BackgroundColor="#E8F2F9">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Key, StringFormat='{0:dd/MM/yyyy}'}" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="5"/>
-                                        <ListView Grid.Column="1" ItemsSource="{Binding Value.GetBudgetActions}">
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <ViewCell>
-                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                                            <Label Text="{Binding GetActionName}" />
-                                                            <Label Text="{Binding GetActionGain}" />
-                                                            <Label Text="{Binding GetActionLoss}" />
-                                                        </StackLayout>
-                                                    </ViewCell>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                    </Grid>
-                                </ViewCell.View>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+            <CollectionView x:Name="MonthlyBalanceSortedListView" ItemsSource="{Binding MonthBudgetReport}">
+                <CollectionView.Header>
+                            <Grid BackgroundColor="#F5F5F5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Date" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                                <Label Text="Action" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                                <Label Text="Gagné" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                                <Label Text="Perdu" Grid.Row="0" Grid.Column="3" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                            </Grid>
+                        </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding Key, StringFormat='{0:dd/MM/yyyy}'}" Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                <ListView Grid.Column="1" ItemsSource="{Binding Value.GetBudgetActions}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                    <Label Text="{Binding GetActionName}" />
+                                                    <Label Text="{Binding GetActionGain}" />
+                                                    <Label Text="{Binding GetActionLoss}" />
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
             </Frame>
 
             <!-- Espace entre le tableau et le bouton "Ajouter" -->

@@ -6,19 +6,12 @@
         <StackLayout Padding="10">
             <!-- En-tête -->
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label Text="Rapport"
+                <Label Text="Rapport Complet"
                        FontSize="30"
                        VerticalOptions="Start"
                        TextColor="#0072C6"
                        FontAttributes="Bold"
                        Margin="0,20,0,10"/>
-                <Label Text="{Binding PeriodText}"
-                       FontSize="30"
-                       VerticalOptions="Start"
-                       TextColor="#0072C6"
-                       FontAttributes="Bold"
-                       Margin="0,20,0,10"
-                       VerticalTextAlignment="Center"/>
             </StackLayout>
 
             <!-- StackLayout avec bouton "Précédent", contenu (jour de la semaine et date), et bouton "Suivant" -->
@@ -38,19 +31,12 @@
 
                 <!-- Jour de la semaine et date -->
                 <StackLayout x:Name="sl1" HorizontalOptions="CenterAndExpand">
-                    <Label Text="{Binding DayOfWeek}"
+                    <Label Text="{Binding BindingYear}"
                FontSize="24"
                FontAttributes="Bold"
                TextColor="#D7444A"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"/>
-
-                    <Label Text="{Binding Date}"
-               FontSize="18"
-               TextColor="#AAA"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="CenterAndExpand"/>
-                </StackLayout>
 
                 <!-- Bouton "Suivant" -->
                 <Button Text="Suivant"
@@ -65,7 +51,7 @@
             </StackLayout>
             <!-- Frame autour du tableau -->
             <Frame CornerRadius="10" BackgroundColor="White" Padding="10">
-                <ListView x:Name="dailyBalanceListView" ItemsSource="{Binding DayBudgetReportShow}">
+                <ListView x:Name="BalanceListView" ItemsSource="{Binding BudgetReportShow}">
                     <!-- ... contenu du ListView ... -->
                 </ListView>
             </Frame>
