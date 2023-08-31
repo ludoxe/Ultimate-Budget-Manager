@@ -37,7 +37,7 @@ namespace Ultra_Budget_Gamify
        .GetDailyBudgetReport(DateTime.Now.Date)[DateTime.Now.Date]
        .GetBudgetActions;
 
-            dailyBalanceListView.ItemsSource = dayBudgetReportShow;
+            BalanceListView.ItemsSource = dayBudgetReportShow;
         }
 
         private void SetDateInformationShow()

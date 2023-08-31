@@ -40,14 +40,14 @@
 
                 <!-- Bouton "Suivant" -->
                 <Button Text="Suivant"
-            Clicked="NextButton_Clicked"
-            BackgroundColor="#5BCAFF"
-            TextColor="White"
-            FontSize="10"
-            WidthRequest="80"
-            HeightRequest="35"
-            HorizontalOptions="End"
-            VerticalOptions="End"/>
+                Clicked="NextButton_Clicked"
+                BackgroundColor="#5BCAFF"
+                TextColor="White"
+                FontSize="10"
+                WidthRequest="80"
+                HeightRequest="35"
+                HorizontalOptions="End"
+                VerticalOptions="End"/>
             </StackLayout>
             <!-- Frame autour du tableau -->
             <Frame CornerRadius="10" BackgroundColor="White" Padding="10">
@@ -61,6 +61,7 @@
 
             <!-- Bouton "Ajouter" -->
             <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="AddButton_Clicked"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
