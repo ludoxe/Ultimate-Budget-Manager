@@ -97,29 +97,26 @@
                                         </Grid.RowDefinitions>
                                         <Label Text="{Binding Key, StringFormat='{0:dd/MM/yyyy}'}" Grid.Row="0" Grid.Column="0" 
                                        Margin="5"/>
-                                        <ListView Grid.Column="1" MinimumHeightRequest="5" VerticalOptions="StartAndExpand" ItemsSource="{Binding Value.GetBudgetActions}" HasUnevenRows = "true" >
-                                            <ListView.ItemTemplate>
+                                        <FlexLayout BindableLayout.ItemsSource="{Binding Value.GetBudgetActions}" 
+                                                    Direction="Column" Grid.Column="1" VerticalOptions="StartAndExpand">
+                                            <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
-                                                    <ViewCell>
-                                                        <ViewCell.View>
-                                                            <Grid BackgroundColor="#F5F5F5">
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="Auto"/>
-                                                                </Grid.RowDefinitions>
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="*" />
-                                                                    <ColumnDefinition Width="*" />
-                                                                    <ColumnDefinition Width="*" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <Label Text="{Binding GetActionName}" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" Margin="5" />
-                                                                <Label Text="{Binding GetActionGain}" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Margin="5" />
-                                                                <Label Text="{Binding GetActionLoss}" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" Margin="5" />
-                                                            </Grid>
-                                                        </ViewCell.View>
-                                                    </ViewCell>
+                                                    <Grid BackgroundColor="#F5F5F5">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Text="{Binding GetActionName}" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" Margin="5" />
+                                                        <Label Text="{Binding GetActionGain}" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Margin="5" />
+                                                        <Label Text="{Binding GetActionLoss}" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" Margin="5" />
+                                                    </Grid>
                                                 </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
+                                            </BindableLayout.ItemTemplate>
+                                        </FlexLayout>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
