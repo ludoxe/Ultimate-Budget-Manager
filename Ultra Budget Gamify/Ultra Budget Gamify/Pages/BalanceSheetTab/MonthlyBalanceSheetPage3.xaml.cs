@@ -15,7 +15,7 @@ namespace Ultra_Budget_Gamify
         #region Binding
         public string BindingMonth { get; set; }
         public string BindingYear { get; set; }
-        public SortedList<DateTime, DayBudgetReport> MonthBudgetReport = new SortedList<DateTime, DayBudgetReport>();
+        public SortedList<DateTime, DayBudgetReport> MonthBudgetReport { get; set; }
 
         #endregion
 
@@ -42,13 +42,6 @@ namespace Ultra_Budget_Gamify
         {
             MonthBudgetReport = SingletonBudgetArray
        .GetSingleBudgetArray().GetMonthlyBudgetReport(DateTime.Now.Date);
-
-
-
-            MonthlyBalanceSortedListView.ItemsSource = MonthBudgetReport;
-
-
-
         }
 
         private void SetDateInformationShow()

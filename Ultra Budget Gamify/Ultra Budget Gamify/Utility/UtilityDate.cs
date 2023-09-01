@@ -30,6 +30,7 @@ namespace Ultra_Budget_Gamify
             int firstWeekDayOfMonth = (int)new DateTime(date.Year, date.Month, 1).DayOfWeek;
 
             int weekNumber = (date.Day + firstWeekDayOfMonth - 1) / daysInWeek ;
+            weekNumber += 1; //pour calibrer avec la première semaine qui débutte à 0
 
             return weekNumber;
         }

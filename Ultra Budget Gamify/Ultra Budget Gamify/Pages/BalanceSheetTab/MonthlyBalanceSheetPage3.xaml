@@ -37,7 +37,6 @@
                TextColor="#D7444A"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"/>
-
                     <Label Text="{Binding BindingYear}"
                FontSize="18"
                TextColor="#AAA"
@@ -57,7 +56,7 @@
             VerticalOptions="End"/>
             </StackLayout>
             <!-- Frame autour du tableau -->
-            <Frame CornerRadius="10" BackgroundColor="White" Padding="10" VerticalOptions="Center" HeightRequest="460">
+            <Frame CornerRadius="10" BackgroundColor="White" Padding="10" VerticalOptions="Center" HeightRequest="450">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -82,10 +81,9 @@
                         <Label Text="Perdu" Grid.Column="3" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
                     </Grid>
                     <ScrollView Grid.Row="1">
-                        <CollectionView x:Name="MonthlyBalanceSortedListView" ItemsSource="{Binding MonthBudgetReport}">
+                        <CollectionView ItemsSource="{Binding MonthBudgetReport}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-
                                     <Grid VerticalOptions="StartAndExpand">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="80" />
@@ -116,7 +114,6 @@
                                             </BindableLayout.ItemTemplate>
                                         </FlexLayout>
                                     </Grid>
-
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
