@@ -6,7 +6,7 @@
         <StackLayout Padding="10">
             <!-- En-tête -->
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label Text="Rapport Complet"
+                <Label Text="Rapport complet"
                        FontSize="30"
                        VerticalOptions="Start"
                        TextColor="#0072C6"
@@ -31,37 +31,93 @@
 
                 <!-- Jour de la semaine et date -->
                 <StackLayout x:Name="sl1" HorizontalOptions="CenterAndExpand">
-                    <Label Text="{Binding BindingYear}"
-               FontSize="24"
-               FontAttributes="Bold"
-               TextColor="#D7444A"
+                    <Label Text="{Binding BindingBudgetPeriod}"
+               FontSize="16"
+               TextColor="#AAA"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
 
                 <!-- Bouton "Suivant" -->
                 <Button Text="Suivant"
-                Clicked="NextButton_Clicked"
-                BackgroundColor="#5BCAFF"
-                TextColor="White"
-                FontSize="10"
-                WidthRequest="80"
-                HeightRequest="35"
-                HorizontalOptions="End"
-                VerticalOptions="End"/>
+            Clicked="NextButton_Clicked"
+            BackgroundColor="#5BCAFF"
+            TextColor="White"
+            FontSize="10"
+            WidthRequest="80"
+            HeightRequest="35"
+            HorizontalOptions="End"
+            VerticalOptions="End"/>
             </StackLayout>
             <!-- Frame autour du tableau -->
-            <Frame CornerRadius="10" BackgroundColor="White" Padding="10">
-                <ListView x:Name="BalanceListView" ItemsSource="{Binding BudgetReportShow}">
-                    <!-- ... contenu du ListView ... -->
-                </ListView>
+            <Frame CornerRadius="10" BackgroundColor="White" Padding="10" VerticalOptions="Center" HeightRequest="450">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid BackgroundColor="#F5F5F5" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Date" Grid.Column="0" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                        <Label Text="Action" Grid.Column="1" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                        <Label Text="Gagné" Grid.Column="2" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                        <Label Text="Perdu" Grid.Column="3" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                    </Grid>
+                    <ScrollView Grid.Row="1">
+                        <CollectionView ItemsSource="{Binding BudgetReportShow}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid VerticalOptions="StartAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Key, StringFormat='{0:dd/MM/yyyy}'}" Grid.Row="0" Grid.Column="0" 
+                                       Margin="5"/>
+                                        <FlexLayout BindableLayout.ItemsSource="{Binding Value.GetBudgetActions}" 
+                                                    Direction="Column" Grid.Column="1" VerticalOptions="StartAndExpand">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid BackgroundColor="Beige">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Text="{Binding GetActionName}" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" Margin="5" />
+                                                        <Label Text="{Binding GetActionGain}" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Margin="5" />
+                                                        <Label Text="{Binding GetActionLoss}" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" Margin="5" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </FlexLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView>
+                </Grid>
             </Frame>
-
             <!-- Espace entre le tableau et le bouton "Ajouter" -->
-            <StackLayout HeightRequest="20"/>
-
+            <StackLayout HeightRequest="20" VerticalOptions="CenterAndExpand"/>
             <!-- Bouton "Ajouter" -->
             <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="AddButton_Clicked"/>
-            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

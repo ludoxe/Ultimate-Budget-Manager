@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Ultra_Budget_Gamify.DailyBalanceSheetPage1">
+<views:CustomBaseContentPage  
+    xmlns:views="clr-namespace:Ultra_Budget_Gamify" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="Ultra_Budget_Gamify.DailyBalanceSheetPage1">
+
     <ContentPage.Content>
         <StackLayout Padding="10">
             <!-- En-tête -->
@@ -34,7 +37,7 @@
                     WidthRequest="80"
                     HeightRequest="35"
                     HorizontalOptions="Start"
-                    VerticalOptions="End"/>     
+                    VerticalOptions="End"/>
 
                 <!-- Jour de la semaine et date -->
                 <StackLayout x:Name="sl1" HorizontalOptions="CenterAndExpand">
@@ -116,4 +119,4 @@
                     HorizontalOptions="CenterAndExpand" Clicked="AddButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</views:CustomBaseContentPage>

@@ -12,6 +12,11 @@ namespace Ultra_Budget_Gamify
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AnnuallyBalanceSheetPage4 : ContentPage
     {
+        #region Binding
+        public SortedList<DateTime, DayBudgetReport> BudgetReportShow { get; set; }
+        public string BindingBudgetPeriod { get; set; }
+
+        #endregion
         #region Constructor
 
         public AnnuallyBalanceSheetPage4()
@@ -28,31 +33,28 @@ namespace Ultra_Budget_Gamify
         private void InitializeView()
         {
             SetListView();
+            SetDateInformationShow();
+
+            BindingContext = this;
         }
 
         private void SetListView()
         {
-            List<BudgetAction> dayBudgetReportShow = SingletonBudgetArray
-       .GetSingleBudgetArray()
-       .GetDailyBudgetReport(DateTime.Now.Date)[DateTime.Now.Date]
-       .GetBudgetActions;
+            BudgetReportShow = SingletonBudgetArray
+       .GetSingleBudgetArray().GetBudgetSortedList;
 
-            BalanceListView.ItemsSource = dayBudgetReportShow;
+            
         }
 
         private void SetDateInformationShow()
         {
-            // Configurer la liaison de données pour le label DayOfWeek
-            string dayOfWeek = UtilityDate.GetFrenchDayOfWeek(DateTime.Now.Date);
             // Configurer la liaison de données pour le label Date
-            string formattedDate = DateTime.Now.Date.ToString("dd/MM/yyyy");
+            string StartDate = DateTime.Now.Date.ToString("dd/MM/yyyy");
+            string EndDate = DateTime.Now.Date.ToString("dd/MM/yyyy");
 
-            BindingContext = new
-            {
-                PeriodText = UtilityDate.GetPeriodText(DateTime.Now.Date),
-                DayOfWeek = dayOfWeek,
-                Date = formattedDate
-            };
+            BindingBudgetPeriod = StartDate + " - " + EndDate;
+
+
         }
 
         #endregion

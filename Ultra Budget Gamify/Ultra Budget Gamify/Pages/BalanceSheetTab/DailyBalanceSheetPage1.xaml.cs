@@ -8,28 +8,37 @@ using Xamarin.Forms.Xaml;
 namespace Ultra_Budget_Gamify
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DailyBalanceSheetPage1 : ContentPage
+    public partial class DailyBalanceSheetPage1 : CustomBaseContentPage
     {
-
         #region Constructor
 
         public DailyBalanceSheetPage1()
         {
-            InitializeComponent();
-            SetListView();
-            SetDateInformationDisplay();
+            DatePagePropreties = DateTime.Now;
+            InitializePage();
+        }
+        public DailyBalanceSheetPage1(DateTime Date)
+        {
+            DatePagePropreties = Date;
+            InitializePage();
+
         }
 
         #endregion
 
         #region Initialization
 
-
+        private void InitializePage()
+        {
+            InitializeComponent();
+            SetListView();
+            SetDateInformationDisplay();
+        }
         private void SetListView()
         {
             List<BudgetAction> dayBudgetReportShow = SingletonBudgetArray
        .GetSingleBudgetArray()
-       .GetDailyBudgetReport(DateTime.Now.Date)[DateTime.Now.Date]
+       .GetDailyBudgetReport(DatePagePropreties)[DatePagePropreties]
        .GetBudgetActions;
 
             dailyBalanceListView.ItemsSource = dayBudgetReportShow;
@@ -38,13 +47,13 @@ namespace Ultra_Budget_Gamify
         private void SetDateInformationDisplay()
         {
             // Configurer la liaison de données pour le label DayOfWeek
-            string dayOfWeek = UtilityDate.GetFrenchDayOfWeek(DateTime.Now.Date);
+            string dayOfWeek = UtilityDate.GetFrenchDayOfWeek(DatePagePropreties);
             // Configurer la liaison de données pour le label Date
-            string formattedDate = DateTime.Now.Date.ToString("dd/MM/yyyy");
+            string formattedDate = DatePagePropreties.ToString("dd/MM/yyyy");
 
             BindingContext = new
             {
-                PeriodText = UtilityDate.GetPeriodText(DateTime.Now.Date),
+                PeriodText = UtilityDate.GetPeriodText(DatePagePropreties),
                 DayOfWeek = dayOfWeek,
                 Date = formattedDate
             };
@@ -60,12 +69,11 @@ namespace Ultra_Budget_Gamify
         }
         private async void PreviousButton_Clicked(object sender, EventArgs e)
         {
-            await NavigateToAddBudgetActionPage();
+            await NavigateToSamePageOneDayBefore();
         }
         private async void NextButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddBudgetActionPage());
-            //Do something again nigga
+            await NavigateToSamePageOneDayAfter();
         }
 
 
@@ -75,9 +83,20 @@ namespace Ultra_Budget_Gamify
 
         private async Task NavigateToAddBudgetActionPage()
         {
-            await Navigation.PushAsync(new AddBudgetActionPage());
+            await Navigation.PushAsync(new AddBudgetActionPage(DatePagePropreties));
         }
 
+        private async Task NavigateToSamePageOneDayBefore()
+        {
+            
+            await Navigation.PushAsync(new DailyBalanceSheetPage1(DatePagePropreties.AddDays(-1)));
+        }
+        private async Task NavigateToSamePageOneDayAfter()
+        {
+            await Navigation.PushAsync(new DailyBalanceSheetPage1(DatePagePropreties.AddDays(1)));
+        }
         #endregion
+
+
     }
 }

@@ -44,6 +44,8 @@ namespace Ultra_Budget_Gamify
             new SortedList<DateTime, DayBudgetReport>(BudgetSortedList);
         public SortedList<DateTime, DayBudgetReport> GetDailyBudgetReport(DateTime Day)
         {
+            Console.WriteLine(Day);
+            Console.WriteLine(BudgetSortedList[Day]);
             return new SortedList<DateTime, DayBudgetReport>()
             {
                 { Day, BudgetSortedList[Day] }
@@ -73,7 +75,7 @@ namespace Ultra_Budget_Gamify
             {
 
                 DayBudgetReportDate = kvp.Key.Date;
-      
+
                 if (DayBudgetReportDate >= firstDayOfWeek && DayBudgetReportDate <= lastDayOfWeek
                     && DayBudgetReportDate.Month == Date.Month)
                 {
@@ -98,7 +100,7 @@ namespace Ultra_Budget_Gamify
                 if (kvp.Key >= startOfMonth && kvp.Key <= endOfMonth)
                 {
                     result.Add(kvp.Key.Date, kvp.Value);
-                    
+
                 }
             }
             Console.WriteLine("end Of Month " + endOfMonth);

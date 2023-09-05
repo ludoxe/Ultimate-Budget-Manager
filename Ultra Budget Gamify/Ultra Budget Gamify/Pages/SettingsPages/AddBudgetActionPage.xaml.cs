@@ -9,19 +9,30 @@ using Xamarin.Forms.Xaml;
 namespace Ultra_Budget_Gamify
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddBudgetActionPage : ContentPage
+    public partial class AddBudgetActionPage : CustomBaseContentPage
     {
         public AddBudgetActionPage()
+        {
+            DatePagePropreties = DateTime.Now;
+            Initialize();
+        }
+        public AddBudgetActionPage(DateTime Date)
+        {
+            DatePagePropreties = Date;
+            Initialize();
+        }
+
+            #region Initialization
+
+        private void Initialize()
         {
             InitializeComponent();
             InitializeView();
         }
 
-        #region Initialization
-
-        private void InitializeView()
+            private void InitializeView()
         {
-            DateTime currentDate = DateTime.Now.Date;
+            DateTime currentDate = DatePagePropreties;
             string periodText = UtilityDate.GetPeriodText(currentDate);
             string dayOfWeek = UtilityDate.GetFrenchDayOfWeek(currentDate);
             string dateFormatted = currentDate.ToString("dd/MM/yyyy");
@@ -58,7 +69,7 @@ namespace Ultra_Budget_Gamify
 
         private void AddActionToBudget(BudgetAction newAction)
         {
-            var currentDate = DateTime.Now.Date;
+            var currentDate = DatePagePropreties;
             var dailyBudgetReport =
                 SingletonBudgetArray.GetSingleBudgetArray().GetDailyBudgetReport(currentDate)[currentDate];
 
