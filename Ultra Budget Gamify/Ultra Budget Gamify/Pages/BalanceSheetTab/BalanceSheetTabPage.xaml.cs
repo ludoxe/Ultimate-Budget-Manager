@@ -10,11 +10,21 @@ using Xamarin.Forms.Xaml;
 namespace Ultra_Budget_Gamify
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BalanceSheetTabPage : Xamarin.Forms.CarouselPage
+    public partial class BalanceSheetTabPage : CarouselPage
     {
+        private DateTime DatePage;
         public BalanceSheetTabPage()
         {
+            DatePageProprety = DateTime.Now.Date;
             InitializeComponent();
         }
+        public BalanceSheetTabPage(DateTime Date)
+        {
+            DatePageProprety = Date;
+            InitializeComponent();
+        }
+
+        public DateTime DatePageProprety { get { return DatePage.Date; } set { DatePage = value; } }
+
     }
 }

@@ -82,7 +82,8 @@ namespace Ultra_Budget_Gamify
 
         private async Task NavigateToBalanceSheetPage()
         {
-            await Navigation.PushAsync(new BalanceSheetTabPage());
+            var Page = new BalanceSheetTabPage();
+            await Navigation.PushAsync(new BalanceSheetTabPage() );
         }
 
         #endregion

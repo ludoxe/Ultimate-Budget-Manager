@@ -45,8 +45,8 @@
                     BackgroundColor="#5BCAFF"
                     TextColor="White"
                     FontSize="18"
-                    HorizontalOptions="EndAndExpand"
-                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
                     Clicked="ValidateButton_Clicked"/>
 
         </StackLayout>
