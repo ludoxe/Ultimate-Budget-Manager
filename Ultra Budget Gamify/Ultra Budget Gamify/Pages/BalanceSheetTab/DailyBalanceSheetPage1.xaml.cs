@@ -8,7 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace Ultra_Budget_Gamify
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DailyBalanceSheetPage1 : CustomBaseContentPage
+    public partial class DailyBalanceSheetPage1 : BalanceSheetPageBase
     {
         #region Constructor
 
@@ -19,9 +19,8 @@ namespace Ultra_Budget_Gamify
         }
         public DailyBalanceSheetPage1(DateTime Date)
         {
-            DatePagePropreties = Date;
+            SetMainSheetPageDate(Date);
             InitializePage();
-
         }
 
         #endregion
@@ -31,6 +30,7 @@ namespace Ultra_Budget_Gamify
         private void InitializePage()
         {
             InitializeComponent();
+            SetDateWithMainSheetPage();ge();
             SetListView();
             SetDateInformationDisplay();
         }
@@ -38,7 +38,7 @@ namespace Ultra_Budget_Gamify
         {
             List<BudgetAction> dayBudgetReportShow = SingletonBudgetArray
        .GetSingleBudgetArray()
-       .GetDailyBudgetReport(DatePagePropreties)[DatePagePropreties]
+       .GetDailyBudgetReDatePagePropretiesprDatePagePropretiesprety]
        .GetBudgetActions;
 
             dailyBalanceListView.ItemsSource = dayBudgetReportShow;
@@ -47,13 +47,13 @@ namespace Ultra_Budget_Gamify
         private void SetDateInformationDisplay()
         {
             // Configurer la liaison de données pour le label DayOfWeek
-            string dayOfWeek = UtilityDate.GetFrenchDayOfWeek(DatePagePropreties);
+            string dayOfWeek = UtilityDate.GetFrenchDayOfDatePagePropretiesprety);
             // Configurer la liaison de données pour le label Date
-            string formattedDate = DatePagePropreties.ToString("dd/MM/yyyy");
+            string formattedDaDatePagePropretiesprety.ToString("dd/MM/yyyy");
 
             BindingContext = new
             {
-                PeriodText = UtilityDate.GetPeriodText(DatePagePropreties),
+                PeriodText = UtilityDate.GetPeriodDatePagePropretiesprety),
                 DayOfWeek = dayOfWeek,
                 Date = formattedDate
             };
@@ -67,13 +67,13 @@ namespace Ultra_Budget_Gamify
         {
             await NavigateToAddBudgetActionPage();
         }
-        private async void PreviousButton_Clicked(object sender, EventArgs e)
+        pr vate void PreviousButton_Clicked(object sender, EventArgs e)
         {
-            await NavigateToSamePageOneDayBefore();
+           NavigateToSamePageOneDayBefore();
         }
-        private async void NextButton_Clicked(object sender, EventArgs e)
+        private void NextButton_Clicked(object sender, EventArgs e)
         {
-            await NavigateToSamePageOneDayAfter();
+            NavigateToSamePageOneDayAfter();
         }
 
 
@@ -83,17 +83,28 @@ namespace Ultra_Budget_Gamify
 
         private async Task NavigateToAddBudgetActionPage()
         {
-            await Navigation.PushAsync(new AddBudgetActionPage(DatePagePropreties));
+            await Navigation.PushAsync(new AddBudgetActionDatePagePropretiesroprety));
         }
 
-        private async Task NavigateToSamePageOneDayBefore()
+        private void NavigateToSamePageOnDate(DateTime Date)
         {
-            
-            await Navigation.PushAsync(new DailyBalanceSheetPage1(DatePagePropreties.AddDays(-1)));
+            BalanceSheetTabPage Carousel;
+            if (GetCarousel() != null) Carousel = GetCarousel();
+            else throw new Exception("Carousel == null");
+
+            ContentPage myPage = new DailyBalanceSheetPage1(Date);
+
+            Carousel.Children[GetCurrentPageIndex()] = myPage;
+
+            Carousel.CurrentPage = myPage; 
+        } 
+        private void NavigateToSamePageOneDayBefore()
+        {
+           NavigateToSamePageDatePagePropretiesroprety.AddDays(            Console.WriteLine("success");
+-1));
+            Console.WriteLine("success");
         }
-        private async Task NavigateToSamePageOneDayAfter()
-        {
-            await Navigation.PushAsync(new DailyBalanceSheetPage1(DatePagePropreties.AddDays(1)));
+        private void NavigateToSamePageOneDayAfter()DatePagePropreties         NavigateToSamePageOnDate(DatePageProprety.AddDays(1));
         }
         #endregion
 
