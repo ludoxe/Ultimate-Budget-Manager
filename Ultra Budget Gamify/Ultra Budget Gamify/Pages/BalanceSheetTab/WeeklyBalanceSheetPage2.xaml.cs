@@ -7,22 +7,209 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static Ultra_Budget_Gamify.UtilityDate;
-using System.Collections;
 
 namespace Ultra_Budget_Gamify
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WeeklyBalanceSheetPage2 : ContentPage
+    public partial class WeeklyBalanceSheetPage2 : ContentPage, INotifyPropertyChanged
     {
         #region Binding
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public string BindingWeekOfMonth { get; set; }
+        private List<BudgetActionWeekModelView> _budgetActionWeekListView;
+        public List<BudgetActionWeekModelView> BudgetActionWeekListView
+        {
+            get => _budgetActionWeekListView;
+            set
+            {
+                _budgetActionWeekListView = value;
+                OnPropertyChanged(nameof(BudgetActionWeekListView));
+            }
+        }
+        private string _actionName;
+        public string ActionName
+        {
+            get => _actionName;
+            set
+            {
+                _actionName = value;
+                OnPropertyChanged(nameof(ActionName));
+            }
+        }
+        private string _actionGain;
+        public string ActionGain
+        {
+            get => _actionGain;
+            set
+            {
+                _actionGain = value;
+                OnPropertyChanged(nameof(ActionGain));
+            }
+        }
+        private string _actionLoss;
+        public string ActionLoss
+        {
+            get => _actionLoss;
+            set
+            {
+                _actionLoss = value;
+                OnPropertyChanged(nameof(ActionLoss));
+            }
+        }
 
-        public string BindingWeekPeriod { get; set; }
+        private string _weekOfMonth;
+        public string WeekOfMonth
+        {
+            get => _weekOfMonth;
+            set
+            {
+                _weekOfMonth = value;
+                OnPropertyChanged(nameof(WeekOfMonth));
+            }
+        }
 
-        public List<BudgetAction> BudgetActions { get; set; }
+        private string _weekPeriod;
+        public string WeekPeriod
+        {
+            get => _weekPeriod;
+            set
+            {
+                _weekPeriod = value;
+                OnPropertyChanged(nameof(WeekPeriod));
+            }
+        }
 
-        public Dictionary<string, List<BudgetAction>> WeekBudgetActions { get; set; }
+        private string _dayName;
+        public string DayName
+        {
+            get => _dayName;
+            set
+            {
+                _dayName = value;
+                OnPropertyChanged(nameof(DayName));
+            }
+        }
+
+        private List<BudgetAction> _budgetActions;
+        public List<BudgetAction> BudgetActions
+        {
+            get => _budgetActions;
+            set
+            {
+                _budgetActions = value;
+                OnPropertyChanged(nameof(BudgetActions));
+            }
+        }
+
+        private string _getActionName;
+        public string GetActionName
+        {
+            get => _getActionName;
+            set
+            {
+                _getActionName = value;
+                OnPropertyChanged(nameof(GetActionName));
+            }
+        }
+
+        private string _getActionGain;
+        public string GetActionGain
+        {
+            get => _getActionGain;
+            set
+            {
+                _getActionGain = value;
+                OnPropertyChanged(nameof(GetActionGain));
+            }
+        }
+
+        private string _getActionLoss;
+        public string GetActionLoss
+        {
+            get => _getActionLoss;
+            set
+            {
+                _getActionLoss = value;
+                OnPropertyChanged(nameof(GetActionLoss));
+            }
+        }
+
+        private List<BudgetAction> _mondayBudgetActions;
+        public List<BudgetAction> MondayBudgetActions
+        {
+            get { return _mondayBudgetActions; }
+            set
+            {
+                _mondayBudgetActions = value;
+                OnPropertyChanged(nameof(MondayBudgetActions));
+            }
+        }
+        private List<BudgetAction> _tuesdayBudgetActions;
+        public List<BudgetAction> TuesdayBudgetActions
+        {
+            get { return _tuesdayBudgetActions; }
+            set
+            {
+                _tuesdayBudgetActions = value;
+                OnPropertyChanged(nameof(TuesdayBudgetActions));
+            }
+        }
+        private List<BudgetAction> _wednesdayBudgetActions;
+        public List<BudgetAction> WednesdayBudgetActions
+        {
+            get { return _wednesdayBudgetActions; }
+            set
+            {
+                _wednesdayBudgetActions = value;
+                OnPropertyChanged(nameof(WednesdayBudgetActions));
+            }
+        }
+        private List<BudgetAction> _thursdayBudgetActions;
+        public List<BudgetAction> ThursdayBudgetActions
+        {
+            get { return _thursdayBudgetActions; }
+            set
+            {
+                _thursdayBudgetActions = value;
+                OnPropertyChanged(nameof(ThursdayBudgetActions));
+            }
+        }
+        private List<BudgetAction> _fridayBudgetActions;
+        public List<BudgetAction> FridayBudgetActions
+        {
+            get { return _fridayBudgetActions; }
+            set
+            {
+                _fridayBudgetActions = value;
+                OnPropertyChanged(nameof(FridayBudgetActions));
+            }
+        }
+        private List<BudgetAction> _saturdayBudgetActions;
+        public List<BudgetAction> SaturdayBudgetActions
+        {
+            get { return _saturdayBudgetActions; }
+            set
+            {
+                _saturdayBudgetActions = value;
+                OnPropertyChanged(nameof(SaturdayBudgetActions));
+            }
+        }
+        private List<BudgetAction> _sundayBudgetActions;
+        public List<BudgetAction> SundayBudgetActions
+        {
+            get { return _sundayBudgetActions; }
+            set
+            {
+                _sundayBudgetActions = value;
+                OnPropertyChanged(nameof(SundayBudgetActions));
+            }
+        }
+
+
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         #endregion
 
         #region Constructor
@@ -47,20 +234,16 @@ namespace Ultra_Budget_Gamify
             new SortedList<DateTime, DayBudgetReport>(
                 SingletonBudgetArray.GetSingleBudgetArray()
                 .GetWeeklyBudgetReport(DateTime.Now.Date, UtilityDate.GetWeekOfMonth(DateTime.Now.Date)));
-            // Créez une liste ordonnée des jours de la semaine dans l'ordre souhaité
 
+            List<BudgetActionWeekModelView> BudgetActionWeekListView = new List<BudgetActionWeekModelView>();
 
-
-            WeekBudgetActions = new Dictionary<string, List<BudgetAction>>()
-            {
-                 { "Lundi",  new List<BudgetAction>()},
-                 { "Mardi",  new List<BudgetAction>()},
-                 { "Mercredi",  new List<BudgetAction>()},
-                 { "Jeudi",  new List<BudgetAction>()},
-                 { "Vendredi",  new List<BudgetAction>()},
-                 { "Samedi",  new List<BudgetAction>()},
-                 { "Dimanche",  new List<BudgetAction>()}
-            };
+            MondayBudgetActions = new List<BudgetAction>();
+            TuesdayBudgetActions = new List<BudgetAction>();
+            WednesdayBudgetActions = new List<BudgetAction>();
+            ThursdayBudgetActions = new List<BudgetAction>();
+            FridayBudgetActions = new List<BudgetAction>();
+            SaturdayBudgetActions = new List<BudgetAction>();
+            SundayBudgetActions = new List<BudgetAction>();
 
             foreach (KeyValuePair<DateTime, DayBudgetReport> kvp in WeekBudgetReportRaw)
             {
@@ -68,25 +251,25 @@ namespace Ultra_Budget_Gamify
                 switch (kvp.Key.ToString("dddd"))
                 {
                     case "lundi":
-                        WeekBudgetActions["Lundi"] = kvp.Value.GetBudgetActions;
+                        MondayBudgetActions = new List<BudgetAction>(kvp.Value.GetBudgetActions);
                         break;
                     case "mardi":
-                        WeekBudgetActions["Mardi"] = kvp.Value.GetBudgetActions;
+                        TuesdayBudgetActions = new List<BudgetAction>(kvp.Value.GetBudgetActions);
                         break;
                     case "mercredi":
-                        WeekBudgetActions["Mercredi"] = kvp.Value.GetBudgetActions;
+                        WednesdayBudgetActions = new List<BudgetAction>(kvp.Value.GetBudgetActions);
                         break;
                     case "jeudi":
-                        WeekBudgetActions["Jeudi"] = kvp.Value.GetBudgetActions;
+                        ThursdayBudgetActions = new List<BudgetAction>(kvp.Value.GetBudgetActions);
                         break;
                     case "vendredi":
-                        WeekBudgetActions["Vendredi"] = kvp.Value.GetBudgetActions;
+                        FridayBudgetActions = new List<BudgetAction>(kvp.Value.GetBudgetActions);
                         break;
                     case "samedi":
-                        WeekBudgetActions["Samedi"] = kvp.Value.GetBudgetActions;
+                        SaturdayBudgetActions = new List<BudgetAction>(kvp.Value.GetBudgetActions);
                         break;
                     case "dimanche":
-                        WeekBudgetActions["Dimanche"] = kvp.Value.GetBudgetActions;
+                        SundayBudgetActions = new List<BudgetAction>(kvp.Value.GetBudgetActions);
                         break;
                 }
 
@@ -98,8 +281,11 @@ namespace Ultra_Budget_Gamify
             DateTime WeekStart = UtilityDate.GetWeekPeriod(DateTime.Now.Date)[0];
             DateTime WeekEnd = UtilityDate.GetWeekPeriod(DateTime.Now.Date)[1];
 
-            BindingWeekOfMonth = "Semaine " + UtilityDate.GetWeekOfMonth(DateTime.Now.Date);
-            BindingWeekPeriod = WeekStart.ToString("dd/MM/yyyy") + " - " + WeekEnd.ToString("dd/MM/yyyy");
+            WeekOfMonth = "Semaine " + UtilityDate.GetWeekOfMonth(DateTime.Now.Date);
+            WeekPeriod = WeekStart.ToString("dd/MM/yyyy") + " - " + WeekEnd.ToString("dd/MM/yyyy");
+
+
+
         }
 
         #endregion
