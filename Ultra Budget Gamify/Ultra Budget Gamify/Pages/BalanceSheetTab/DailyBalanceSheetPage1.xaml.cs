@@ -30,15 +30,15 @@ namespace Ultra_Budget_Gamify
         private void InitializePage()
         {
             InitializeComponent();
-            SetDateWithMainSheetPage();
+            SetDateWithMainSheetPage();ge();
             SetListView();
             SetDateInformationDisplay();
         }
         private void SetListView()
         {
             List<BudgetAction> dayBudgetReportShow = SingletonBudgetArray
-                   .GetSingleBudgetArray().
-                   GetDailyBudgetReport(DatePagePropreties)[DatePagePropreties]
+       .GetSingleBudgetArray()
+       .GetDailyBudgetReDatePagePropretiesprDatePagePropretiesprety]
        .GetBudgetActions;
 
             dailyBalanceListView.ItemsSource = dayBudgetReportShow;
@@ -47,13 +47,13 @@ namespace Ultra_Budget_Gamify
         private void SetDateInformationDisplay()
         {
             // Configurer la liaison de données pour le label DayOfWeek
-            string dayOfWeek = UtilityDate.GetFrenchDayOfWeek(DatePagePropreties);
+            string dayOfWeek = UtilityDate.GetFrenchDayOfDatePagePropretiesprety);
             // Configurer la liaison de données pour le label Date
-            string formattedDate = DatePagePropreties.ToString("dd/MM/yyyy");
+            string formattedDaDatePagePropretiesprety.ToString("dd/MM/yyyy");
 
             BindingContext = new
             {
-                PeriodText = UtilityDate.GetPeriodText(DatePagePropreties),
+                PeriodText = UtilityDate.GetPeriodDatePagePropretiesprety),
                 DayOfWeek = dayOfWeek,
                 Date = formattedDate
             };
@@ -67,9 +67,9 @@ namespace Ultra_Budget_Gamify
         {
             await NavigateToAddBudgetActionPage();
         }
-        private void PreviousButton_Clicked(object sender, EventArgs e)
+        pr vate void PreviousButton_Clicked(object sender, EventArgs e)
         {
-            NavigateToSamePageOneDayBefore();
+           NavigateToSamePageOneDayBefore();
         }
         private void NextButton_Clicked(object sender, EventArgs e)
         {
@@ -83,7 +83,7 @@ namespace Ultra_Budget_Gamify
 
         private async Task NavigateToAddBudgetActionPage()
         {
-            await Navigation.PushAsync(new AddBudgetActionPage(DatePagePropreties));
+            await Navigation.PushAsync(new AddBudgetActionDatePagePropretiesroprety));
         }
 
         private void NavigateToSamePageOnDate(DateTime Date)
@@ -96,15 +96,15 @@ namespace Ultra_Budget_Gamify
 
             Carousel.Children[GetCurrentPageIndex()] = myPage;
 
-            Carousel.CurrentPage = myPage;
-        }
+            Carousel.CurrentPage = myPage; 
+        } 
         private void NavigateToSamePageOneDayBefore()
         {
-            NavigateToSamePageOnDate(DatePagePropreties.AddDays(-1));
+           NavigateToSamePageDatePagePropretiesroprety.AddDays(            Console.WriteLine("success");
+-1));
+            Console.WriteLine("success");
         }
-        private void NavigateToSamePageOneDayAfter()
-        {
-            NavigateToSamePageOnDate(DatePagePropreties.AddDays(1));
+        private void NavigateToSamePageOneDayAfter()DatePagePropreties         NavigateToSamePageOnDate(DatePageProprety.AddDays(1));
         }
         #endregion
 

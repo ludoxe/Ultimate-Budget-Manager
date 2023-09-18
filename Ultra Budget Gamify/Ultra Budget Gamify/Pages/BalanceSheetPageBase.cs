@@ -19,8 +19,7 @@ namespace Ultra_Budget_Gamify
 
         #region Public Get
         public BalanceSheetTabPage GetCarousel()
-        {
-            BalanceSheetTabPage parentPage = this.Parent as BalanceSheetTabPage;
+        {rentPage != n BalanceSheetTabPage parentPage = this.Parent as BalanceSheetTabPage;
 
             while (parentPage != null && !(parentPage is CarouselPage))
             {
@@ -37,24 +36,43 @@ namespace Ultra_Budget_Gamify
                 return null;
             }
 
+tPage est une instance de CarouselPage
+            if (parentPage is CarouselPage carouselPage)
+            {
+                return parentPage;
+            }
+            else
+            {
+                return null;
+            }
+
+
         }
 
         public int GetCurrentPageIndex()
         {
-            return -1;
-        }
+            BalanceSheetTabPage parentPage = GetCarousel();
 
-        #endregion
+            if (parentBalanceSheetPageBase)
+ MainSheetPage             PageBase GetMaif (this is BalanceSheetPageBase) return this;
+            else
+            {
+                return this.Parent as BalanceSheetPageBase;
+            }    if (this is BalanceSheetPageBase) return this;
+            else
+            {
+          hMainSheetPageurn this.Parent as BalanceSBalanceSheetPageBase MainSheetPage
+ GetMainSheetPage() 
 
-        #region Public Set
+        p     BalanceSheetPageBase MaiMainSheetge = GetMainSheetPage();
 
-        public void SetMainSheetPageDate(DateTime date)
+            DatePageProprety = MPageBasetPageSheetePropreGetMainSheetPage    }
+        publMainSheetPagehDatePagePropretiesTime DatublDatePagePropretiesithMainSheetPagetDatePagePropreties{
+       e)
         {
+            BalanceSheetPageBase MainSheetPage = GetMainSheetPage();
 
-        }
-
-        public void SetDateWithMainSheetPage()
-        {
+            MainSheetPage.DatePageProprety = Date;
 
         }
 
