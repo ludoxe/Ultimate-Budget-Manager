@@ -14,7 +14,6 @@ namespace Ultra_Budget_Gamify
 
         public DailyBalanceSheetPage1()
         {
-            SetMainSheetPageDate(DateTime.Now.Date);
             InitializePage();
         }
         public DailyBalanceSheetPage1(DateTime Date)

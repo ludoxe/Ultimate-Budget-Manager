@@ -58,13 +58,14 @@ namespace Ultra_Budget_Gamify
         {
             CarouselPage Carousel = GetCarousel();
             BalanceSheetTabPage MainSheetPage;
+            Console.WriteLine(this.ToString());
+            Console.WriteLine(Carousel.ToString());
             if (Carousel is BalanceSheetTabPage)
             {
                 MainSheetPage = Carousel as BalanceSheetTabPage;
 
                 Console.WriteLine(MainSheetPage.ToString());
             }
-            else if (Carousel == null) throw new Exception("Carousel is null");
             else throw new Exception("MainSheetPage is not BalanceSheetTabPage");
 
             MainSheetPage.DatePageProprety = date;
@@ -77,12 +78,13 @@ namespace Ultra_Budget_Gamify
             CarouselPage Carousel = GetCarousel();
             BalanceSheetTabPage MainSheetPage;
 
+            Console.WriteLine(this.ToString());
+            Console.WriteLine(Carousel.ToString());
             if (Carousel is BalanceSheetTabPage)
             {
                 MainSheetPage = Carousel as BalanceSheetTabPage;
                 DatePagePropreties = MainSheetPage.DatePageProprety;
             }
-            else if (Carousel == null) throw new Exception("Carousel is null");
             else throw new Exception("MainSheetPage is not BalanceSheetTabPage");
 
             
