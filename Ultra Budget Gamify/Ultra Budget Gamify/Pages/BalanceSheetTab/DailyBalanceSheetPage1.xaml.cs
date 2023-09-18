@@ -14,6 +14,7 @@ namespace Ultra_Budget_Gamify
 
         public DailyBalanceSheetPage1()
         {
+            DatePagePropreties = DateTime.Now;
             InitializePage();
         }
         public DailyBalanceSheetPage1(DateTime Date)
@@ -21,12 +22,7 @@ namespace Ultra_Budget_Gamify
             SetMainSheetPageDate(Date);
             InitializePage();
         }
-        public DailyBalanceSheetPage1(CarouselPage Carousel, DateTime Date)
-        {        
-            this.Parent = Carousel;
-            SetMainSheetPageDate(Date);
-            InitializePage();
-        }
+
         #endregion
 
         #region Initialization
@@ -92,18 +88,15 @@ namespace Ultra_Budget_Gamify
 
         private void NavigateToSamePageOnDate(DateTime Date)
         {
-            CarouselPage Carousel;
-
+            BalanceSheetTabPage Carousel;
             if (GetCarousel() != null) Carousel = GetCarousel();
             else throw new Exception("Carousel == null");
 
-            ContentPage myPage = new DailyBalanceSheetPage1(Carousel, Date);
+            ContentPage myPage = new DailyBalanceSheetPage1(Date);
 
             Carousel.Children[GetCurrentPageIndex()] = myPage;
 
             Carousel.CurrentPage = myPage;
-
-
         }
         private void NavigateToSamePageOneDayBefore()
         {

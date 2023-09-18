@@ -24,7 +24,6 @@ namespace Ultra_Budget_Gamify
             InitializeComponent();
         }
 
-
         public DateTime DatePageProprety { get { return DatePage.Date; } set { DatePage = value; } }
 
     }
