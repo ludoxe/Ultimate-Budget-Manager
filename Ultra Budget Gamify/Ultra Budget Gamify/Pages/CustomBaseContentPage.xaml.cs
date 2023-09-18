@@ -14,7 +14,6 @@ namespace Ultra_Budget_Gamify
 	{
         #region DynamicPageSettings
         private DateTime DatePage = DateTime.Now;
-        private Page CachePage = null;
         #endregion
         #region Constructor
         
@@ -26,7 +25,6 @@ namespace Ultra_Budget_Gamify
 
         #region Public Propreties
         public DateTime DatePagePropreties { get => DatePage; set => DatePage = value.Date; }
-        public Page CachePagePropreties;
 
         #endregion
 
