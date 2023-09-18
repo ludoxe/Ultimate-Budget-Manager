@@ -57,35 +57,37 @@
             VerticalOptions="End"/>
             </StackLayout>
             <!-- Frame autour du tableau -->
-            <Frame CornerRadius="10" BackgroundColor="White" Padding="10" VerticalOptions="Center" HeightRequest="460">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid BackgroundColor="#F5F5F5" Grid.Row="0">
+            <Frame CornerRadius="10" BackgroundColor="White" Padding="10" VerticalOptions="Center">
+                <ScrollView>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <!-- Créer une ligne pour chaque jour de la semaine -->
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Label Text="Date" Grid.Column="0" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
-                        <Label Text="Action" Grid.Column="1" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
-                        <Label Text="Gagné" Grid.Column="2" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
-                        <Label Text="Perdu" Grid.Column="3" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
-                    </Grid>
-                    <ScrollView Grid.Row="1">
                         <CollectionView x:Name="MonthlyBalanceSortedListView" ItemsSource="{Binding MonthBudgetReport}">
+                            <CollectionView.Header>
+                                <Grid BackgroundColor="#F5F5F5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Date" Grid.Column="0" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                                    <Label Text="Action" Grid.Column="1" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                                    <Label Text="Gagné" Grid.Column="2" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+                                    <Label Text="Perdu" Grid.Column="3" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5"/>
+
+                                </Grid>
+                            </CollectionView.Header>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-
                                     <Grid VerticalOptions="StartAndExpand">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="80" />
@@ -99,7 +101,7 @@
                                                     Direction="Column" Grid.Column="1" VerticalOptions="StartAndExpand">
                                             <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Grid BackgroundColor="Beige">
+                                                    <Grid BackgroundColor="#F5F5F5">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="Auto"/>
                                                         </Grid.RowDefinitions>
@@ -116,15 +118,16 @@
                                             </BindableLayout.ItemTemplate>
                                         </FlexLayout>
                                     </Grid>
-
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                    </ScrollView>
-                </Grid>
+                        
+                    </Grid>
+                </ScrollView>
             </Frame>
             <!-- Espace entre le tableau et le bouton "Ajouter" -->
             <StackLayout HeightRequest="20" VerticalOptions="CenterAndExpand"/>
+
             <!-- Bouton "Ajouter" -->
             <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="AddButton_Clicked"/>
         </StackLayout>
