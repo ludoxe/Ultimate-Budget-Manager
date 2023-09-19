@@ -18,8 +18,9 @@ namespace Ultra_Budget_Gamify
         }
 
         #region Public Get
-        public BalanceSheetTabPage GetCarousel()
-        {rentPage != n BalanceSheetTabPage parentPage = this.Parent as BalanceSheetTabPage;
+        public CarouselPage GetCarousel()
+        {
+            CarouselPage parentPage = this.Parent as CarouselPage;
 
             while (parentPage != null && !(parentPage is CarouselPage))
             {
@@ -27,7 +28,7 @@ namespace Ultra_Budget_Gamify
             }
 
             // Vérifiez si parentPage est une instance de CarouselPage
-            if (parentPage is CarouselPage carouselPage)
+            if (parentPage is CarouselPage)
             {
                 return parentPage;
             }
@@ -35,45 +36,34 @@ namespace Ultra_Budget_Gamify
             {
                 return null;
             }
-
-tPage est une instance de CarouselPage
-            if (parentPage is CarouselPage carouselPage)
-            {
-                return parentPage;
-            }
-            else
-            {
-                return null;
-            }
-
 
         }
 
+
+
         public int GetCurrentPageIndex()
         {
-            BalanceSheetTabPage parentPage = GetCarousel();
+            CarouselPage myCarouselPage = GetCarousel();
 
-            if (parentBalanceSheetPageBase)
- MainSheetPage             PageBase GetMaif (this is BalanceSheetPageBase) return this;
-            else
-            {
-                return this.Parent as BalanceSheetPageBase;
-            }    if (this is BalanceSheetPageBase) return this;
-            else
-            {
-          hMainSheetPageurn this.Parent as BalanceSBalanceSheetPageBase MainSheetPage
- GetMainSheetPage() 
+            Console.WriteLine(myCarouselPage.ToString());
 
-        p     BalanceSheetPageBase MaiMainSheetge = GetMainSheetPage();
+            return GetCarousel().Children.IndexOf(myCarouselPage.CurrentPage); ;
+        }
 
-            DatePageProprety = MPageBasetPageSheetePropreGetMainSheetPage    }
-        publMainSheetPagehDatePagePropretiesTime DatublDatePagePropretiesithMainSheetPagetDatePagePropreties{
-       e)
+        #endregion
+
+        #region Public Set
+
+
+        public void SetSingletonGlobalPageState(DateTime Date)
         {
-            BalanceSheetPageBase MainSheetPage = GetMainSheetPage();
+            SingletonGlobalPageState.GetSingleGlobalPageState().CurrentDatePagesProprety = Date;
 
-            MainSheetPage.DatePageProprety = Date;
+        }
 
+        public void SetDatePageWithSingletonGlobalPageState()
+        {
+            DatePagePropreties = SingletonGlobalPageState.GetSingleGlobalPageState().CurrentDatePagesProprety;
         }
 
         #endregion
