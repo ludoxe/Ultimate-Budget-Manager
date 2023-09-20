@@ -15,6 +15,30 @@ namespace Ultra_Budget_Gamify
 
         }
 
+        #region Virtual Void
+
+        protected virtual void InitializePage()
+        {
+            InitializeDynamicElementPage();
+
+        }
+
+        #endregion
+
+        #region Public Method
+
+        public void RefreshPage()
+        {
+            InitializeDynamicElementPage();
+        }
+
+        protected virtual void InitializeDynamicElementPage()
+        {
+            SetDatePageWithSingletonGlobalPageState();
+        }
+
+        #endregion  
+
         #region Public Get
         public CarouselPage GetCarousel()
         {

@@ -31,13 +31,18 @@ namespace Ultra_Budget_Gamify
 
         #region Initialization
 
-        private void InitializePage()
+        protected override void InitializePage()
         {
             InitializeComponent();
-            SetDatePageWithSingletonGlobalPageState();
+            base.InitializePage();
+        }
+        protected override void InitializeDynamicElementPage()
+        {
+            base.InitializeDynamicElementPage();
             SetListView();
             SetDateInformationDisplay();
         }
+
         private void SetListView()
         {
             List<BudgetAction> dayBudgetReportShow = SingletonBudgetArray
@@ -103,6 +108,14 @@ namespace Ultra_Budget_Gamify
 
             Carousel.CurrentPage = myPage;
 
+            foreach(ContentPage page in Carousel.Children)
+            {
+                if (page is BalanceSheetPageBase)
+                {
+                    (page as BalanceSheetPageBase).RefreshPage();
+                }
+            }
+            
 
         }
         private void NavigateToSamePageOneDayBefore()

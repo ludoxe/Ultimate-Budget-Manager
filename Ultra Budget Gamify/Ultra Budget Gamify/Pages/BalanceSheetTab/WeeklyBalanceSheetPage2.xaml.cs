@@ -11,11 +11,9 @@ using static Ultra_Budget_Gamify.UtilityDate;
 namespace Ultra_Budget_Gamify
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WeeklyBalanceSheetPage2 : ContentPage, INotifyPropertyChanged
+    public partial class WeeklyBalanceSheetPage2 : BalanceSheetPageBase, INotifyPropertyChanged
     {
         #region Binding
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private List<BudgetActionWeekModelView> _budgetActionWeekListView;
         public List<BudgetActionWeekModelView> BudgetActionWeekListView
         {
@@ -205,22 +203,16 @@ namespace Ultra_Budget_Gamify
             }
         }
 
-
-        protected override void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
         #endregion
 
         #region Constructor
 
         public WeeklyBalanceSheetPage2()
         {
-            InitializeComponent();
-            SetListView();
-            SetDateInformationShow();
+            
+            InitializePage();
 
-            BindingContext = this;
+            
 
         }
 
@@ -228,12 +220,25 @@ namespace Ultra_Budget_Gamify
 
         #region Initialization
 
+        protected override void InitializePage()
+        {
+            InitializeComponent();
+            base.InitializePage();
+        }
+        protected override void InitializeDynamicElementPage()
+        {
+            base.InitializeDynamicElementPage();
+            SetListView();
+            SetDateInformationShow();
+            BindingContext = this;
+        }
+
         private void SetListView()
         {
             SortedList<DateTime, DayBudgetReport> WeekBudgetReportRaw =
             new SortedList<DateTime, DayBudgetReport>(
                 SingletonBudgetArray.GetSingleBudgetArray()
-                .GetWeeklyBudgetReport(DateTime.Now.Date, UtilityDate.GetWeekOfMonth(DateTime.Now.Date)));
+                .GetWeeklyBudgetReport(DatePagePropreties, UtilityDate.GetWeekOfMonth(DatePagePropreties)));
 
             List<BudgetActionWeekModelView> BudgetActionWeekListView = new List<BudgetActionWeekModelView>();
 
@@ -278,10 +283,10 @@ namespace Ultra_Budget_Gamify
 
         private void SetDateInformationShow()
         {
-            DateTime WeekStart = UtilityDate.GetWeekPeriod(DateTime.Now.Date)[0];
-            DateTime WeekEnd = UtilityDate.GetWeekPeriod(DateTime.Now.Date)[1];
+            DateTime WeekStart = UtilityDate.GetWeekPeriod(DatePagePropreties)[0];
+            DateTime WeekEnd = UtilityDate.GetWeekPeriod(DatePagePropreties)[1];
 
-            WeekOfMonth = "Semaine " + UtilityDate.GetWeekOfMonth(DateTime.Now.Date);
+            WeekOfMonth = "Semaine " + UtilityDate.GetWeekOfMonth(DatePagePropreties);
             WeekPeriod = WeekStart.ToString("dd/MM/yyyy") + " - " + WeekEnd.ToString("dd/MM/yyyy");
 
 

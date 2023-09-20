@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<views:BalanceSheetPageBase  
+xmlns:views="clr-namespace:Ultra_Budget_Gamify" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ultra_Budget_Gamify.WeeklyBalanceSheetPage2">
+    
     <ContentPage.Content>
         <StackLayout Padding="10">
             <!-- En-tête -->
@@ -62,7 +65,7 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            
+
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <!-- Créer une ligne pour chaque jour de la semaine -->
@@ -287,4 +290,4 @@
             <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="AddButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</views:BalanceSheetPageBase>
