@@ -14,9 +14,10 @@ namespace Ultra_Budget_Gamify
 	{
         #region DynamicPageSettings
         private DateTime DatePage = DateTime.Now;
+        private ContentPage CachePage;
         #endregion
         #region Constructor
-        
+
         public CustomBaseContentPage ()
 		{
 

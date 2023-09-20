@@ -61,7 +61,11 @@ namespace Ultra_Budget_Gamify
 
         public void SetDatePageWithSingletonGlobalPageState()
         {
-            DatePagePropreties = SingletonGlobalPageState.GetSingleGlobalPageState().CurrentDatePagesProprety;
+            DateTime GlobalDate = SingletonGlobalPageState.GetSingleGlobalPageState().CurrentDatePagesProprety;
+
+            if (GlobalDate != DateTime.MinValue)
+                DatePagePropreties = GlobalDate;
+            else DatePagePropreties = DateTime.Now.Date;
         }
 
         #endregion
