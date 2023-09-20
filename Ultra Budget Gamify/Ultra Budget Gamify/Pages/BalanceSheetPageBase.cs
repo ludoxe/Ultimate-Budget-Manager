@@ -10,8 +10,6 @@ namespace Ultra_Budget_Gamify
 {
     public class BalanceSheetPageBase : CustomBaseContentPage
     {
-        private BalanceSheetPageBase MainSheetPage;
-
         public BalanceSheetPageBase()
         {
 
