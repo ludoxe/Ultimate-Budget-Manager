@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Ultra_Budget_Gamify
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MonthlyBalanceSheetPage3 : ContentPage
+    public partial class MonthlyBalanceSheetPage3 : BalanceSheetPageBase
     {
         #region Binding
         public string BindingMonth { get; set; }
@@ -23,19 +23,20 @@ namespace Ultra_Budget_Gamify
 
         public MonthlyBalanceSheetPage3()
         {
-            InitializeComponent();
-            InitializeView();
-            SetDateInformationShow();
-            BindingContext = this;
+            InitializePage();
         }
 
         #endregion
 
         #region Initialization
 
-        private void InitializeView()
+        protected override void InitializePage()
         {
+            if (SingleInitializeComponentLocker == false) InitializeComponent();
+            base.InitializePage();
             SetListView();
+            SetDateInformationShow();
+            BindingContext = this;
         }
 
         private void SetListView()

@@ -33,12 +33,8 @@ namespace Ultra_Budget_Gamify
 
         protected override void InitializePage()
         {
-            InitializeComponent();
+            if(SingleInitializeComponentLocker == false) InitializeComponent();
             base.InitializePage();
-        }
-        protected override void InitializeDynamicElementPage()
-        {
-            base.InitializeDynamicElementPage();
             SetListView();
             SetDateInformationDisplay();
         }

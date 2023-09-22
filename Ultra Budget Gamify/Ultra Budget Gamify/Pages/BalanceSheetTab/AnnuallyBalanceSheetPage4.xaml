@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<views:BalanceSheetPageBase  
+    xmlns:views="clr-namespace:Ultra_Budget_Gamify" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Ultra_Budget_Gamify.AnnuallyBalanceSheetPage4">
     <ContentPage.Content>
@@ -120,4 +122,4 @@
             <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="AddButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</views:BalanceSheetPageBase>

@@ -10,6 +10,8 @@ namespace Ultra_Budget_Gamify
 {
     public class BalanceSheetPageBase : CustomBaseContentPage
     {
+        protected bool SingleInitializeComponentLocker = false;
+
         public BalanceSheetPageBase()
         {
 
@@ -19,7 +21,8 @@ namespace Ultra_Budget_Gamify
 
         protected virtual void InitializePage()
         {
-            InitializeDynamicElementPage();
+            SetDatePageWithSingletonGlobalPageState();
+            SingleInitializeComponentLocker = true;
 
         }
 
@@ -29,12 +32,7 @@ namespace Ultra_Budget_Gamify
 
         public void RefreshPage()
         {
-            InitializeDynamicElementPage();
-        }
-
-        protected virtual void InitializeDynamicElementPage()
-        {
-            SetDatePageWithSingletonGlobalPageState();
+            InitializePage();
         }
 
         #endregion  

@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Ultra_Budget_Gamify
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AnnuallyBalanceSheetPage4 : ContentPage
+    public partial class AnnuallyBalanceSheetPage4 : BalanceSheetPageBase
     {
         #region Binding
         public SortedList<DateTime, DayBudgetReport> BudgetReportShow { get; set; }
@@ -32,9 +32,10 @@ namespace Ultra_Budget_Gamify
 
         private void InitializeView()
         {
+            if (SingleInitializeComponentLocker == false) InitializeComponent();
+            base.InitializePage();
             SetListView();
             SetDateInformationShow();
-
             BindingContext = this;
         }
 

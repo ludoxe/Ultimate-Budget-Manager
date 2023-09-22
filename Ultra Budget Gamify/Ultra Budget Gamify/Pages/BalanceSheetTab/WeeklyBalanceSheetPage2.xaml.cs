@@ -11,7 +11,7 @@ using static Ultra_Budget_Gamify.UtilityDate;
 namespace Ultra_Budget_Gamify
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WeeklyBalanceSheetPage2 : BalanceSheetPageBase, INotifyPropertyChanged
+    public partial class WeeklyBalanceSheetPage2 : BalanceSheetPageBase
     {
         #region Binding
         private List<BudgetActionWeekModelView> _budgetActionWeekListView;
@@ -208,12 +208,8 @@ namespace Ultra_Budget_Gamify
         #region Constructor
 
         public WeeklyBalanceSheetPage2()
-        {
-            
+        {       
             InitializePage();
-
-            
-
         }
 
         #endregion
@@ -222,17 +218,12 @@ namespace Ultra_Budget_Gamify
 
         protected override void InitializePage()
         {
-            InitializeComponent();
+            if(SingleInitializeComponentLocker == false) InitializeComponent();
             base.InitializePage();
-        }
-        protected override void InitializeDynamicElementPage()
-        {
-            base.InitializeDynamicElementPage();
             SetListView();
             SetDateInformationShow();
             BindingContext = this;
         }
-
         private void SetListView()
         {
             SortedList<DateTime, DayBudgetReport> WeekBudgetReportRaw =
