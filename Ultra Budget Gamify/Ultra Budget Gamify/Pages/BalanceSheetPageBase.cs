@@ -26,6 +26,30 @@ namespace Ultra_Budget_Gamify
 
         }
 
+        protected virtual void NavigateToSamePageOnDate(DateTime Date)
+        {
+            CarouselPage Carousel;
+
+            if (GetCarousel() != null) Carousel = GetCarousel();
+            else throw new Exception("Carousel == null");
+
+            ContentPage myPage = new DailyBalanceSheetPage1(Carousel, Date);
+
+            Carousel.Children[GetCurrentPageIndex()] = myPage;
+
+            Carousel.CurrentPage = myPage;
+
+            foreach (ContentPage page in Carousel.Children)
+            {
+                if (page is BalanceSheetPageBase)
+                {
+                    (page as BalanceSheetPageBase).RefreshPage();
+                }
+            }
+
+
+        }
+
         #endregion
 
         #region Public Method

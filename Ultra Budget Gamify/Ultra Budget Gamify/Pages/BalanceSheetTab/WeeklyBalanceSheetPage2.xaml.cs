@@ -293,6 +293,15 @@ namespace Ultra_Budget_Gamify
             await NavigateToAddBudgetActionPage();
         }
 
+        private void PreviousButton_Clicked(object sender, EventArgs e)
+        {
+            NavigateToSamePageOneWeekBefore();
+        }
+        private void NextButton_Clicked(object sender, EventArgs e)
+        {
+            NavigateToSamePageOneWeekAfter();
+        }
+
         #endregion
 
         #region Navigation
@@ -301,17 +310,15 @@ namespace Ultra_Budget_Gamify
         {
             await Navigation.PushAsync(new AddBudgetActionPage());
         }
-        private async void PreviousButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddBudgetActionPage());
-            //Do something
-        }
-        private async void NextButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddBudgetActionPage());
-            //Do something again nigga
-        }
 
+        private void NavigateToSamePageOneWeekBefore()
+        {
+            NavigateToSamePageOnDate(DatePagePropreties.AddDays(-7));
+        }
+        private void NavigateToSamePageOneWeekAfter()
+        {
+            NavigateToSamePageOnDate(DatePagePropreties.AddDays(7));
+        }
         #endregion
     }
 }
