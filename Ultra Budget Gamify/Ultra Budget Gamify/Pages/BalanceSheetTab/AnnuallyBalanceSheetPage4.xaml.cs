@@ -15,6 +15,17 @@ namespace Ultra_Budget_Gamify
         #region Binding
         public SortedList<DateTime, DayBudgetReport> BudgetReportShow { get; set; }
         public string BindingBudgetPeriod { get; set; }
+        private string _yearDate;
+        private string _bindingMonth;
+        public string YearDate
+        {
+            get => _yearDate;
+            set
+            {
+                _yearDate = value;
+                OnPropertyChanged(nameof(YearDate));
+            }
+        }
 
         #endregion
         #region Constructor
@@ -23,7 +34,12 @@ namespace Ultra_Budget_Gamify
         {
             InitializePage();
         }
-
+        public AnnuallyBalanceSheetPage4(CarouselPage Carousel, DateTime Date)
+        {
+            this.Parent = Carousel;
+            SetSingletonGlobalPageState(Date);
+            InitializePage();
+        }
         #endregion
 
         #region Initialization
@@ -48,10 +64,12 @@ namespace Ultra_Budget_Gamify
         private void SetDateInformationShow()
         {
             // Configurer la liaison de données pour le label Date
-            string StartDate = DateTime.Now.Date.ToString("dd/MM/yyyy");
-            string EndDate = DateTime.Now.Date.ToString("dd/MM/yyyy");
+            string StartDate = DatePagePropreties.ToString("dd/MM/yyyy");
+            string EndDate = DatePagePropreties.ToString("dd/MM/yyyy");
 
             BindingBudgetPeriod = StartDate + " - " + EndDate;
+
+            YearDate = DatePagePropreties.Year.ToString();
 
 
         }

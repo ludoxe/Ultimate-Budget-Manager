@@ -33,7 +33,24 @@ namespace Ultra_Budget_Gamify
             if (GetCarousel() != null) Carousel = GetCarousel();
             else throw new Exception("Carousel == null");
 
-            ContentPage myPage = new DailyBalanceSheetPage1(Carousel, Date);
+            ContentPage myPage = null ;
+            switch (this as BalanceSheetPageBase)
+            {
+                case DailyBalanceSheetPage1 _:
+                    myPage = new DailyBalanceSheetPage1(Carousel, Date);
+                    break;
+                case WeeklyBalanceSheetPage2 _:
+                    myPage = new WeeklyBalanceSheetPage2(Carousel, Date);
+                    break;
+                case MonthlyBalanceSheetPage3 _:
+                    myPage = new MonthlyBalanceSheetPage3(Carousel, Date);
+                    break;
+                case AnnuallyBalanceSheetPage4 _:
+                    myPage = new AnnuallyBalanceSheetPage4(Carousel, Date);
+                    break;
+                case null:
+                    throw new Exception("Switch case error");
+            }
 
             Carousel.Children[GetCurrentPageIndex()] = myPage;
 

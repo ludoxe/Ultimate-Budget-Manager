@@ -32,7 +32,14 @@
                     VerticalOptions="End"/>
 
                 <!-- Jour de la semaine et date -->
-                <StackLayout x:Name="sl1" HorizontalOptions="CenterAndExpand">
+                <StackLayout x:Name="yd" HorizontalOptions="CenterAndExpand">
+                    <Label x:Name="Year"
+                       Text="{Binding YearDate}"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#D7444A"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
                     <Label Text="{Binding BindingBudgetPeriod}"
                FontSize="16"
                TextColor="#AAA"

@@ -13,8 +13,25 @@ namespace Ultra_Budget_Gamify
     public partial class MonthlyBalanceSheetPage3 : BalanceSheetPageBase
     {
         #region Binding
-        public string BindingMonth { get; set; }
-        public string BindingYear { get; set; }
+        private string _bindingYear;
+        public string BindingYear
+        {
+            get => _bindingYear;
+            set
+            {
+                _bindingYear = value;
+                OnPropertyChanged(nameof(BindingYear));
+            }
+        }
+        private string _bindingMonth;
+        public string BindingMonth {
+            get => _bindingMonth;
+            set
+            {
+                _bindingMonth = value;
+                OnPropertyChanged(nameof(BindingMonth));
+            }
+        }
         public SortedList<DateTime, DayBudgetReport> MonthBudgetReport = new SortedList<DateTime, DayBudgetReport>();
 
         #endregion
@@ -23,6 +40,12 @@ namespace Ultra_Budget_Gamify
 
         public MonthlyBalanceSheetPage3()
         {
+            InitializePage();
+        }
+        public MonthlyBalanceSheetPage3(CarouselPage Carousel, DateTime Date)
+        {
+            this.Parent = Carousel;
+            SetSingletonGlobalPageState(Date);
             InitializePage();
         }
 
@@ -42,7 +65,7 @@ namespace Ultra_Budget_Gamify
         private void SetListView()
         {
             MonthBudgetReport = SingletonBudgetArray
-       .GetSingleBudgetArray().GetMonthlyBudgetReport(DateTime.Now.Date);
+       .GetSingleBudgetArray().GetMonthlyBudgetReport(DatePagePropreties);
 
 
 
@@ -54,13 +77,9 @@ namespace Ultra_Budget_Gamify
 
         private void SetDateInformationShow()
         {
-            // Configurer la liaison de données pour le label DayOfWeek
-            string dayOfWeek = UtilityDate.GetFrenchDayOfWeek(DateTime.Now.Date);
-            // Configurer la liaison de données pour le label Date
-            string formattedDate = DateTime.Now.Date.ToString("dd/MM/yyyy");
+            BindingMonth = DatePagePropreties.ToString("MMMM");
+            BindingYear = DatePagePropreties.ToString("yyyy");
 
-            BindingMonth = DateTime.Now.ToString("MMMM");
-            BindingYear = DateTime.Now.ToString("yyyy");
         }
 
         #endregion

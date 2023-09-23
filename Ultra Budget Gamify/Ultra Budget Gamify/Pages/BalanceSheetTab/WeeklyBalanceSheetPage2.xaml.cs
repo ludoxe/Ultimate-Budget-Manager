@@ -211,6 +211,12 @@ namespace Ultra_Budget_Gamify
         {       
             InitializePage();
         }
+        public WeeklyBalanceSheetPage2(CarouselPage Carousel, DateTime Date)
+        {
+            this.Parent = Carousel;
+            SetSingletonGlobalPageState(Date);
+            InitializePage();
+        }
 
         #endregion
 
