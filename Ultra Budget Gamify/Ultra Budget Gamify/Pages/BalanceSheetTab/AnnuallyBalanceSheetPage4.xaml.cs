@@ -21,16 +21,14 @@ namespace Ultra_Budget_Gamify
 
         public AnnuallyBalanceSheetPage4()
         {
-            InitializeComponent();
-            InitializeView();
-            SetDateInformationShow();
+            InitializePage();
         }
 
         #endregion
 
         #region Initialization
 
-        private void InitializeView()
+        protected override void InitializePage()
         {
             if (SingleInitializeComponentLocker == false) InitializeComponent();
             base.InitializePage();
