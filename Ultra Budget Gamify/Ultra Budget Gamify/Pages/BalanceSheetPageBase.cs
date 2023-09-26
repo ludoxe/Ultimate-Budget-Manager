@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Ultra_Budget_Gamify.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -67,6 +67,13 @@ namespace Ultra_Budget_Gamify
 
         }
 
+        #endregion
+
+        #region Virtual Button
+        protected async virtual void GoToRecurrentActionButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RecurrentActionPage());
+        }
         #endregion
 
         #region Public Method

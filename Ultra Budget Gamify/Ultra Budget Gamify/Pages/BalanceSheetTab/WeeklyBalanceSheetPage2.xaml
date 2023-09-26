@@ -287,7 +287,7 @@ xmlns:views="clr-namespace:Ultra_Budget_Gamify"
             <StackLayout HeightRequest="20"/>
 
             <!-- Bouton "Ajouter" -->
-            <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="AddButton_Clicked"/>
+            <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="GoToRecurrentActionButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </views:BalanceSheetPageBase>

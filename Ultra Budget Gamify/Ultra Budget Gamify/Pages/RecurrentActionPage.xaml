@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ultra_Budget_Gamify.Pages.RecurrentActionPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <!-- En-tête -->
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                <Label Text="Actions réccurentes"
+                       FontSize="30"
+                       VerticalOptions="Start"
+                       TextColor="#0072C6"
+                       FontAttributes="Bold"
+                       Margin="0,20,0,10"/>
+
+            </StackLayout>
+
+
+            <Frame CornerRadius="10" BackgroundColor="White" Padding="10" VerticalOptions="Center">
+            </Frame>
+            
+            <!-- Frame autour du tableau -->
+            <Frame CornerRadius="10" BackgroundColor="White" Padding="10" VerticalOptions="Center" HeightRequest="450">
+            </Frame>
+            <!-- Espace entre le tableau et le bouton "Ajouter" -->
+            <StackLayout HeightRequest="20" VerticalOptions="CenterAndExpand"/>
+            <!-- Bouton "Ajouter" -->
+           <!-- <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="AddButton_Clicked"/> -->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

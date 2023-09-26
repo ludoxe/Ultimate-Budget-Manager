@@ -126,7 +126,7 @@
             <!-- Espace entre le tableau et le bouton "Ajouter" -->
             <StackLayout HeightRequest="20" VerticalOptions="CenterAndExpand"/>
             <!-- Bouton "Ajouter" -->
-            <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="AddButton_Clicked"/>
+            <Button Text="Ajouter" BackgroundColor="#5BCAFF" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="GoToRecurrentActionButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </views:BalanceSheetPageBase>
